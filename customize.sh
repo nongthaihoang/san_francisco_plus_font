@@ -22,7 +22,7 @@ patch() {
 	else
 		abort "! $ORIGDIR/system/etc/fonts.xml: file not found"
 	fi
-	DEFFONT=$(sed -n '/"sans-serif">/,/family>/p' $SYSXML | grep '\-Regular.' | sed 's/.*">//;s/-.*//')
+	DEFFONT=$(sed -n '/"sans-serif">/,/family>/p' $SYSXML | grep '\-Regular.' | sed 's/.*">//;s/-.*//' | tail -1)
 	[ $DEFFONT ] || abort "! Unknown default font"
 	if ! grep -q 'family >' $SYSXML; then
 		sed -i '/"sans-serif">/,/family>/H;1,/family>/{/family>/G}' $SYSXML
@@ -58,7 +58,7 @@ rounded() {
 }
 
 text() {
-	cp $FONTDIR/tx/*ttf $SYSFONT
+	cp $FONTDIR/tx/bf/*ttf $SYSFONT
 	ver bftxt
 }
 
@@ -123,7 +123,13 @@ pixel() {
 }
 
 oxygen() {
-	if [ -f $ORIGDIR/system/fonts/SlateForOnePlus-Regular.ttf ]; then
+	if grep -q OnePlus $SYSXML; then
+		if [ -f $ORIGDIR/system/etc/fonts_base.xml ]; then
+			local oosxml=$SYSETC/fonts_base.xml
+			cp $SYSXML $oosxml
+			sed -i "/\"sans-serif\">/,/family>/s/$DEFFONT/Roboto/" $oosxml
+		fi
+	elif [ -f $ORIGDIR/system/fonts/SlateForOnePlus-Regular.ttf ]; then
 		set Black Bold Medium Regular Light Thin
 		for i do cp $SYSFONT/$i.ttf $SYSFONT/SlateForOnePlus-$i.ttf; done
 		cp $SYSFONT/Regular.ttf $SYSFONT/SlateForOnePlus-Book.ttf
@@ -204,6 +210,7 @@ ver() { sed -i 3"s/$/-$1&/" $MODPROP; }
 
 gsp() {
 	local gsp=/data/adb/modules_update/googlesansplus
+	[ -d $gsp ] || gsp=/sdcard
 	if grep -q -e 'hf-' -e 'hf$' $gsp/module.prop; then
 		mv $gsp/system/etc $MODPATH/system
 		ver gsp

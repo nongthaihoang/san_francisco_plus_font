@@ -1,8 +1,8 @@
 # San Francisco Plus Font
 **San Francisco font for Android**
 
-[![version](https://img.shields.io/badge/Version-4.5-brightgreen.svg)](https://github.com/nongthaihoang/san_francisco_plus_font/releases/tag/v4.5) 
-![updated](https://img.shields.io/badge/Updated-Sep_27,_2020-green.svg) 
+[![version](https://img.shields.io/badge/Version-4.6-brightgreen.svg)](https://github.com/nongthaihoang/san_francisco_plus_font/releases/tag/v4.6) 
+![updated](https://img.shields.io/badge/Updated-Oct_03,_2020-green.svg) 
 [![forum](https://img.shields.io/badge/Forum-XDA-orange.svg)](https://forum.xda-developers.com/apps/magisk/font-headline-fonts-nongthaihoang-t3886349) 
 [![download](https://img.shields.io/badge/Download-↓-yellow.svg)](https://github.com/nongthaihoang/san_francisco_plus_font/releases)
 [![donate](https://img.shields.io/badge/Donate-Paypal-blue.svg)](https://paypal.me/nongthaihoang)
