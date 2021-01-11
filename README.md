@@ -1,3 +1,5 @@
+# This font is now obsolete => [OhMyFont](https://forum.xda-developers.com/t/module-oh-my-font-improve-android-typography.4215515/)
+
 # San Francisco Plus Font
 **San Francisco font for Android**
 
